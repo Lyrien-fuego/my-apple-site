@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple (台灣) - 官方網站</title>
+    <style>
+        /* ==========================================================
+           1. 全域樣式與重置 (Global Styles & Reset)
+           ========================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro TC", "SF Pro Text", "SF Pro Icons", "PingFang TC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+            background-color: #f5f5f7; /* Apple 經典的淺灰色背景 */
+            color: #1d1d1f; /* Apple 經典的深灰色文字 */
+            line-height: 1.47059;
+            font-size: 17px;
+            letter-spacing: -0.022em;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ==========================================================
+           2. 頂部導覽列 (Global Navigation Bar)
+           ========================================================== */
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px); /* 模擬 Apple 的半透明毛玻璃效果 */
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            z-index: 9999;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+        }
+
+        .nav-container {
+            max-width: 1024px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 22px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-item a {
+            color: #1d1d1f;
+            font-size: 12px;
+            opacity: 0.8;
+            font-weight: 400;
+            transition: opacity 0.3s;
+        }
+
+        .nav-item a:hover {
+            opacity: 1;
+            text-decoration: none;
+        }
+
+        /* Apple Logo 簡單圖示模擬 */
+        .apple-logo {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* ==========================================================
+           3. 購物袋提示列 (Sub-banner / Announcement)
+           ========================================================== */
+        .announcement-banner {
+            margin-top: 48px; /* 預留固定導覽列的高度 */
+            background-color: #f5f5f7;
+            text-align: center;
+            padding: 14px 16px;
+            font-size: 14px;
+            color: #1d1d1f;
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        .announcement-banner a {
+            color: #0066cc;
+            margin-left: 4px;
+        }
+
+        /* ==========================================================
+           4. 主標題區塊 (Main Hero Section)
+           ========================================================== */
+        .hero-section {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            margin-bottom: 12px; /* 區塊間距：可在此修改 */
+        }
+
+        .hero-container {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            flex-wrap: wrap;
+        }
+
+        .hero-title-area {
+            flex: 1;
+            min-width: 280px;
+            padding-right: 20px;
+        }
+
+        .hero-title-area h1 {
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1.08349;
+            letter-spacing: -0.003em;
+            color: #1d1d1f;
+        }
+
+        .hero-title-area h1 span {
+            color: #86868b; /* 灰色副標文字樣式 */
+        }
+
+        .hero-help-area {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-width: 280px;
+            margin-top: 20px;
+        }
+
+        .helper-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .helper-text h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .helper-text p {
+            font-size: 14px;
+            color: #0066cc;
+            margin-top: 2px;
+        }
+
+        /* ==========================================================
+           5. 商品選單網格區塊 (Product Grid Section)
+           ========================================================== */
+        .product-grid-section {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 22px 60px 22px;
+        }
+
+        .section-heading {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px; /* 區塊間距：可在此修改商品卡片間距 */
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 18px;
+            padding: 24px 16px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-icon {
+            font-size: 48px;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .product-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        /* ==========================================================
+           6. 頁尾樣式 (Footer Section)
+           ========================================================== */
+        footer {
+            background-color: #f5f5f7;
+            border-top: 1px solid #d2d2d7;
+            padding: 20px 22px 40px 22px;
+            font-size: 12px;
+            color: #86868b;
+        }
+
+        .footer-container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導覽列 -->
+    <header>
+        <div class="nav-container">
+            <div class="apple-logo"></div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#">商店</a></li>
+                <li class="nav-item"><a href="#">Mac</a></li>
+                <li class="nav-item"><a href="#">iPad</a></li>
+                <li class="nav-item"><a href="#">iPhone</a></li>
+                <li class="nav-item"><a href="#">Watch</a></li>
+                <li class="nav-item"><a href="#">AirPods</a></li>
+                <li class="nav-item"><a href="#">娛樂</a></li>
+                <li class="nav-item"><a href="#">配件</a></li>
+                <li class="nav-item"><a href="#">支援服務</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 購物袋與最新快訊提示列 -->
+    <div class="announcement-banner">
+        在此挑選你的全新 Apple 裝置。享有免運費服務，並可使用 Apple Trade In 換購。
+        <a href="#">進一步了解 &gt;</a>
+    </div>
+
+    <!-- 主標題區塊 -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-title-area">
+                <h1>商店。 <span>購得你喜愛的 Apple 產品。</span></h1>
+            </div>
+            <div class="hero-help-area">
+                <div class="helper-avatar">👩‍💻</div>
+                <div class="helper-text">
+                    <h3>有任何問題嗎？</h3>
+                    <p>與專員線上對話 &gt;</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商品分類網格區塊 -->
+    <section class="product-grid-section">
+        <h2 class="section-heading">瀏覽全部產品。</h2>
+        <div class="grid-container">
+            <div class="product-card">
+                <span class="product-icon">💻</span>
+                <div class="product-name">Mac</div>
+            </div>
+            <div class="product-card">
+                <span class="product-icon">📱</span>
+                <div class="product-name">iPhone</div>
+            </div>
+            <div class="product-card">
+                <span class="product-icon">📖</span>
+                <div class="product-name">iPad</div>
+            </div>
+            <div class="product-card">
+                <span class="product-icon">⌚</span>
+                <div class="product-name">Apple Watch</div>
+            </div>
+            <div class="product-card">
+                <span class="product-icon">🎧</span>
+                <div class="product-name">AirPods</div>
+            </div>
+            <div class="product-card">
+                <span class="product-icon">📺</span>
+                <div class="product-name">Apple TV 4K</div>
+            </div>
+            <div class="product-card">
+                <span class="product-icon">🏷️</span>
+                <div class="product-name">AirTag</div>
+            </div>
+            <div class="product-card">
+                <span class="product-icon">🔌</span>
+                <div class="product-name">配件</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾宣告 -->
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">1. 免運費適用於符合資格的訂單。</p>
+            <p class="footer-text">Copyright © 2026 Apple Inc. 保留一切權利。</p>
+        </div>
+    </footer>
+
+</body>
+</html>
